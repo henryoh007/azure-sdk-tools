@@ -179,6 +179,7 @@
     <Compile Include="Common\RequiredResourceLookup.cs" />
     <Compile Include="Common\Tasks.cs" />
     <Compile Include="Common\Validate.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="Interfaces\IProfileSerializer.cs" />
     <Compile Include="Interfaces\IClientFactory.cs" />
     <Compile Include="Interfaces\IAuthenticationFactory.cs" />
