@@ -19,7 +19,7 @@
     <ReleaseBuildConfig>Configuration=Release;Platform=Any CPU</ReleaseBuildConfig>
   </PropertyGroup>
   <ItemGroup>
-    <AzurePowerShellCoreSlns Include=".\src\Common.sln;.\src\ServiceManagement.Services.sln" />
+    <AzurePowerShellBasicSln Include=".\src\Basic.sln" />
     <AzurePowerShellSln Include=".\src\AzurePowerShell.sln" />
     <SetupSln Include=".\setup\azurepowershell.sln" />
   </ItemGroup>
@@ -104,10 +104,10 @@
     <Exec Command="$(NuGetCommand) restore $(MSBuildProjectDirectory)\packages.config -PackagesDirectory $(MSBuildProjectDirectory)\packages" />
   </Target>
 
-  <Target Name="BuildCoreProjects" DependsOnTargets="ForceRestorePackages">
+  <Target Name="BuildBasicSolutions" DependsOnTargets="ForceRestorePackages">
     <Message Importance="high" Text="Building Core Solutions..." />
     <MSBuild
-      Projects="@(AzurePowerShellCoreSlns)"
+      Projects="@(AzurePowerShellBasicSln)"
       Targets="Build"
       Properties="$(DebugBuildConfig)"
       ContinueOnError="false" />
@@ -169,7 +169,7 @@
   </Target>
 
   <!-- Build the Cmdlets and Setup in all configurations -->
-  <Target Name="Build" DependsOnTargets="BuildCoreProjects;BuildCmdlets;BuildSetupRelease" />
+  <Target Name="Build" DependsOnTargets="BuildBasicSolutions;BuildCmdlets;BuildSetupRelease" />
   <!-- Do everything possible -->
   <Target
     Name="Full"
